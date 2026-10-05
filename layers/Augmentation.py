@@ -27,32 +27,6 @@ class Scale(nn.Module):
         return x
 
 
-class Flip(nn.Module):
-    # left-right flip
-    def __init__(self, prob=0.):
-        super().__init__()
-        self.prob = prob
-
-    def forward(self, x):
-        if self.training and torch.rand(1) < self.prob:
-            return torch.flip(x, [-1])
-        return x
-
-
-class TemporalMask(nn.Module):
-    # Randomly mask a portion of timestamps across all channels
-    def __init__(self, ratio=0.):
-        super().__init__()
-        self.ratio = ratio
-
-    def forward(self, x):
-        if self.training:
-            B, C, T = x.shape
-            num_mask = int(T * self.ratio)
-            mask_indices = torch.randperm(T)[:num_mask]
-            x[:, :, mask_indices] = 0
-        return x
-
 
 class ChannelMask(nn.Module):
     # Randomly mask a portion of channels across all timestamps
