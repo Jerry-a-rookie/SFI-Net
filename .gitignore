@@ -1,0 +1,11 @@
+# Local datasets and experiment outputs are intentionally not part of this release.
+datasets/
+outputs/
+checkpoints/
+logs/
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
