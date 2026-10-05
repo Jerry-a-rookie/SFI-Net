@@ -39,14 +39,6 @@ Multivariate signal [B, T, C]
 
 The implementation keeps the temporal encoder channel-independent and introduces cross-channel interaction in the channel–patch graph stage. The graph uses cosine similarity with Top-*k* neighbors; Low/Mid/High spectral responses are softly assigned and fused with node-wise gates. See [`models/Ours.py`](models/Ours.py) for the implementation and [`experiments/ours_trainer.py`](experiments/ours_trainer.py) for training and evaluation.
 
-## Main results preview
-
-Selected subject-independent results from the project's updated baseline table (mean ± standard deviation, %, five runs):
-
-| Dataset | Accuracy | Macro-F1 | AUROC |
-|---|---:|---:|---:|
-| APAVA | **86.53 ± 0.75** | **86.33 ± 0.68** | **94.60 ± 0.40** |
-| ADFTD | **55.89 ± 0.49** | 50.27 ± 1.10 | **70.14 ± 0.68** |
 
 <p align="center">
   <img src="assets/efficiency_apava.png" alt="APAVA efficiency comparison" width="88%">
