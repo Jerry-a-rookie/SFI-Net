@@ -83,24 +83,3 @@ python run_ours.py \
 
 The output directory contains run arguments, per-seed checkpoints and metrics, split manifests, aggregate metrics, and diagnostic arrays. Dataset-specific default training settings and the subject-level split logic are kept in the source so the run configuration is inspectable.
 
-## Repository layout
-
-```text
-SFI-Net/
-├── assets/                    # Curated project figures for this README
-├── experiments/
-│   ├── ours_data.py            # Dataset loading and subject-wise splits
-│   └── ours_trainer.py         # Training, evaluation, diagnostics, export
-├── layers/
-│   └── Augmentation.py         # Training-time signal augmentations
-├── models/
-│   └── Ours.py                 # SFI-Net architecture (legacy class name: Ours)
-├── requirements.txt
-└── run_ours.py                # Main APAVA / ADFTD entry point
-```
-
-## License and attribution
-
-This folder does not yet include a license. **A public repository without an explicit license does not grant permission to reuse the code.** Before publishing, confirm the licensing/provenance of the included augmentation implementation and add the license chosen by the project owners. No dataset files or dataset redistribution rights are included here.
-
-The augmentation module was carried over from the project's existing TeCh code tree. The inspected source did not include an upstream license, so its redistribution terms have not yet been confirmed. This release does not include a license file; reuse is not granted unless an explicit license is added.
