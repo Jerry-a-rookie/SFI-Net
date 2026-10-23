@@ -19,23 +19,7 @@
 
 </div>
 
-## Method at a glance
 
-```text
-Multivariate signal [B, T, C]
-        │
-        ├─ Per-channel patching + shared temporal Transformer
-        │
-        └─ Channel–patch tokens [B, C×P, D]
-                    │
-             Sample-specific sparse Top-k graph
-                    │
-        Shared spectral basis + learnable soft bands
-                    │
-          Band-specific graph interaction
-                    │
-          Node-gated band fusion → classifier
-```
 
 The implementation keeps the temporal encoder channel-independent and introduces cross-channel interaction in the channel–patch graph stage. The graph uses cosine similarity with Top-*k* neighbors; Low/Mid/High spectral responses are softly assigned and fused with node-wise gates. See [`models/Ours.py`](models/Ours.py) for the implementation and [`experiments/ours_trainer.py`](experiments/ours_trainer.py) for training and evaluation.
 
@@ -71,23 +55,6 @@ pip install -r requirements.txt
 
 The runner uses CUDA by default when available. To explicitly allow CPU execution, add `--allow-cpu`.
 
-## Data preparation
-
-**No data are distributed in this repository.** Obtain and preprocess each dataset according to its source and the protocol used by the project. Place the resulting files in the expected structure:
-
-```text
-datasets/
-├── APAVA/
-│   └── APAVA/
-│       ├── Feature/feature_<subject_id>.npy
-│       └── Label/label.npy
-└── ADFTD/
-    └── ADFD/
-        ├── Feature/feature_<subject_id>.npy
-        └── Label/label.npy
-```
-
-The default paths point to `./datasets/APAVA` and `./datasets/ADFTD`. Each feature file is expected to contain a `[windows, time, channels]` NumPy array; `label.npy` stores subject labels and IDs. Dataset directories are excluded by [`.gitignore`](.gitignore).
 
 ## Run the main experiments
 
